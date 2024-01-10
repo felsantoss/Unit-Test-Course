@@ -7,13 +7,16 @@ namespace MyClassesTest
     [TestClass]
     public class FileProcessTest
     {
+        private const string BAD_FILE_NAME = @"C:\BadFileName.bat"; // Utilização de constante
+        private string _GoodFileName;
+
         [TestMethod]
         public void FileNameDoesExists() // valida se o arquivo existe
         {
             FileProcess fp = new FileProcess(); // Arrange
             bool fromCall;
 
-            fromCall = fp.FileExists(@"C:\Windows\Regedit.exe"); // Act
+            fromCall = fp.FileExists(@""); // Act
 
             Assert.IsTrue(fromCall); // Assert
         }
@@ -24,7 +27,7 @@ namespace MyClassesTest
             FileProcess fp = new FileProcess();
             bool fromCall;
 
-            fromCall = fp.FileExists(@"C:\Regedit.exe");
+            fromCall = fp.FileExists(BAD_FILE_NAME);
 
             Assert.IsFalse(fromCall);
         }
