@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyClasses
 {
@@ -11,7 +7,12 @@ namespace MyClasses
     {
         public bool FileExists(string filename)
         {
-            
+            if (string.IsNullOrEmpty(filename)) // valida se o arquivo é nulo ou vazio
+            {
+                throw new ArgumentNullException("filename");
+            }
+
+            return File.Exists(filename);
         }
     }
 }
